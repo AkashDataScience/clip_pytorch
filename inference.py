@@ -1,14 +1,23 @@
 import gc
 import cv2
 import torch
+import argparse
 import torch.nn.functional as F
 from tqdm import tqdm
 from transformers import DistilBertTokenizer
 import matplotlib.pyplot as plt
 
 import config as CFG
-from train import build_loaders
+from train import build_loaders, make_train_valid_dfs
 from model import CLIPModel
+
+def get_args():
+    parser = argparse.ArgumentParser(description='PyTorch CLIP Training')
+    parser.add_argument('--weights_path', default='best.pt', type=str, help="Path of trained model weights")
+    parser.add_argument('--query', default='a group of people dancing in a party', type=str,
+                        help="Query to retrive image")
+    args = parser.parse_args()
+    return args
 
 def get_image_embeddings(valid_df, model_path):
     tokenizer = DistilBertTokenizer.from_pretrained(CFG.text_tokenizer)
@@ -54,3 +63,13 @@ def find_matches(model, image_embeddings, query, image_filenames, n=9):
         ax.axis("off")
     
     plt.show()
+
+def infer():
+    args = get_args()
+    _, valid_df = make_train_valid_dfs()
+    model, image_embeddings = get_image_embeddings(valid_df, args.weights_path)
+    find_matches(model, image_embeddings, query=args.query, image_filenames=valid_df['image'].values,
+                 n=9)
+    
+if __name__ == '__main__':
+    infer()
