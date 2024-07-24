@@ -1,6 +1,6 @@
 import torch
 
-debug = True
+debug = False
 image_path = "Images"
 captions_path = "captions.txt"
 batch_size = 8
@@ -19,8 +19,8 @@ text_embedding = 768
 text_tokenizer = "distilbert-base-uncased"
 max_length = 200
 
-pretrained = False # for both image encoder and text encoder
-trainable = False # for both image encoder and text encoder
+pretrained = True # for both image encoder and text encoder
+trainable = True # for both image encoder and text encoder
 temperature = 1.0
 
 # image size
