@@ -12,6 +12,7 @@ pure-eval==0.2.2
 regex==2024.5.15
 stack-data==0.6.3
 tiktoken==0.7.0
+timm==1.0.7
 torch==2.3.0
 torchaudio==2.3.0
 torchmetrics==1.4.0.post0
