@@ -1,8 +1,8 @@
 import torch
 
 debug = True
-image_path = "8k/Images"
-captions_path = "8k"
+image_path = "Images"
+captions_path = "captions.txt"
 batch_size = 8
 num_workers = 0
 lr = 1e-3
