@@ -31,7 +31,7 @@ Our specific model consists of ResNet50 as image encoder and DistilBert as text 
 image and text embeddings to same dimensions we use projection layers. We can compare these
 projections to push apart the non-relevant images and texts and pull together images and texts.
 
-**Model Dimensions:**
+**Model Names and Dimensions:**
 
 - model_name: 'resnet50'
 - image_embedding: 2048
